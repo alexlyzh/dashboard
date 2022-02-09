@@ -1,0 +1,23 @@
+header {
+  padding: 40px 0;
+}
+
+.header__heading {
+  font-size: 26px;
+  line-height: 40px;
+  font-weight: bold;
+
+  margin: 0;
+}
+
+.header__label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+
+  margin: 0;
+}
+
+main {
+  height: 100%;
+}

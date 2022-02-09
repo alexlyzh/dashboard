@@ -1,0 +1,34 @@
+.search {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #474747;
+  border: 1px solid #EBEBEB;
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+.search__icon {
+  padding: 15px 11px 14px 13px;
+}
+
+.search__input {
+  font-family: Roboto, sans-serif;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.search__input::placeholder,
+.search__counter {
+  color: #D1D1D1;
+}
+
+.search__counter {
+  white-space: nowrap;
+  padding: 0 18px;
+}
