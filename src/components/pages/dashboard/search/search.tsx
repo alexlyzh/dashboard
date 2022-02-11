@@ -1,6 +1,6 @@
 import './search.css';
-import { Test } from '../../types/types';
-import {ChangeEvent, useRef, useState} from 'react';
+import { Test } from '../../../../types/types';
+import { ChangeEvent, useRef, useState } from 'react';
 
 type Props = {
   tests: Test[],
