@@ -1,0 +1,24 @@
+.back-link {
+  position: relative;
+  display: inline-block;
+  height: 25px;
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  text-decoration: none;
+  color: #222;
+
+  margin-left: 25px;
+}
+
+.back-link::before {
+  position: absolute;
+  content: '';
+  top: 3px;
+  left: -25px;
+  height: 16px;
+  width: 10px;
+  background-repeat: no-repeat;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDkgMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjEwNDE5IDE2TDAuOTM3ODA1IDguODMzNjJMMC4xMDQxODYgOEwwLjkzNzgwNSA3LjE2NjM4TDguMTA0MTkgMEw4LjkzNzgxIDAuODMzNjE5TDEuNzcxNDIgOEw4LjkzNzgxIDE1LjE2NjRMOC4xMDQxOSAxNloiIGZpbGw9IiMyMjIyMjIiLz4KPC9zdmc+Cg==)
+}

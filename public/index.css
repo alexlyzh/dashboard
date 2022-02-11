@@ -4,12 +4,22 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body, button {
+  padding: 0;
   margin: 0;
-  font-family: Montserrat, sans-serif;
+  font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
+}
+
+button {
+  border: none;
+  cursor: pointer;
 }
 
 code {
@@ -32,8 +42,7 @@ fieldset {
 .page {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
+  height: 100%;
 }
 
 .container {
@@ -55,4 +64,26 @@ fieldset {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px;
+  width: 95px;
+
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FFFFFF;
+  border-radius: 10px;
+  background-color: #2EE5AC;
+}
+
+.button--dark {
+  background: #7D7D7D;
 }

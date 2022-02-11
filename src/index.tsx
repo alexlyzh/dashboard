@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
+import App from './components/app/app';
+import ApiContext from './context/api-context';
 import { BrowserRouter } from 'react-router-dom';
+import { createApi } from './api';
+
+const api = createApi();
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ApiContext.Provider value={api}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ApiContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

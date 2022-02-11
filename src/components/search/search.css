@@ -8,14 +8,21 @@
   border: 1px solid #EBEBEB;
   border-radius: 15px;
   background-color: #fff;
+
+  transition: all 500ms;
+}
+
+.search:hover,
+.search--active {
+  border-color: #999;
 }
 
 .search__icon {
+  cursor: pointer;
   padding: 15px 11px 14px 13px;
 }
 
 .search__input {
-  font-family: Roboto, sans-serif;
   height: 100%;
   width: 100%;
   border: none;

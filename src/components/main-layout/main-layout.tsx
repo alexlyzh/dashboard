@@ -2,24 +2,24 @@ import { ReactNode } from 'react';
 import './main-layout.css';
 
 type Props = {
-  children: ReactNode,
-  headingLabel: string,
-  label?: string,
+  heading: string,
+  children?: ReactNode,
+  subHeading?: string,
 }
 
-function MainLayout({children, headingLabel, label}: Props): JSX.Element {
+function MainLayout({children, heading, subHeading}: Props): JSX.Element {
   return (
     <div className="page">
       <header>
         <div className="container">
-          <h1 className="header__heading">{headingLabel}</h1>
-          {label
-            ? <h2 className="header__label">{label}</h2>
+          <h1 className="header__heading">{heading}</h1>
+          {subHeading
+            ? <h2 className="header__label">{subHeading}</h2>
             : null}
         </div>
       </header>
       <main>
-        {children}
+        { children ? children : null }
       </main>
     </div>
   );
