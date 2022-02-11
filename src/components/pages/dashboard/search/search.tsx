@@ -28,7 +28,7 @@ function Search({ tests, isLoadingTests, search, onSearchInput }: Props): JSX.El
       <input
         ref={inputRef}
         className="search__input"
-        type="search"
+        type="text"
         placeholder="What test are you looking for?"
         value={search}
         onInput={onSearchInput}

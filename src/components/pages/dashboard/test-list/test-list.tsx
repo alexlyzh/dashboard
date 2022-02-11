@@ -53,6 +53,7 @@ function TestList({tests, sites, isLoadingSites, isLoadingTests, onResetBtnClick
               className="test__text test__site-link"
               href={getTestSiteLink(siteId)} aria-label="Test site"
               target="_blank"
+              rel="noreferrer"
             >
               { isLoadingSites ? 'Loading...' : getSiteNameById(siteId, sites) }
             </a>

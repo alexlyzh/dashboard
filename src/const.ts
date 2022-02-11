@@ -45,3 +45,7 @@ export const typeMap = <const>{
   mvt: 'MVT',
   'server_side': 'Server-side',
 };
+
+export enum KeyboardKey {
+  ESC = 'Escape',
+}
