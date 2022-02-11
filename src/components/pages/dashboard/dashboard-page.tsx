@@ -55,6 +55,7 @@ function DashboardPage(): JSX.Element {
             />
             <SortForm
               isVisible={Boolean(handledTests.length)}
+              sort={currentSort}
               onSortNameClick={sort.handleNameSort}
               onSortSiteClick={sort.handleSiteSort}
               onSortStatusClick={sort.handleStatusSort}

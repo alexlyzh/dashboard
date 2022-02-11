@@ -46,6 +46,7 @@ export const Sort = {
       mapped[site.id] = site.url;
       return mapped;
     }, {} as Record<number, string>);
+    console.log(sitesMap)
     return tests.slice().sort((a, b) => {
       if (sitesMap[a.siteId] > sitesMap[b.siteId]) return 1;
       if (sitesMap[a.siteId] < sitesMap[b.siteId]) return -1;
@@ -58,6 +59,7 @@ export const Sort = {
       mapped[site.id] = site.url;
       return mapped;
     }, {} as Record<number, string>);
+    console.log(sitesMap)
     return tests.slice().sort((a, b) => {
       if (sitesMap[b.siteId] > sitesMap[a.siteId]) return 1;
       if (sitesMap[b.siteId] < sitesMap[a.siteId]) return -1;
