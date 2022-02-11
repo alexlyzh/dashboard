@@ -1,7 +1,7 @@
 import './test-list.css';
 import { generatePath, Link } from 'react-router-dom';
 import { appPath, colorMap, TestStatus, typeMap } from '../../../../const';
-import { getRandomHEXColor, getSiteNameById } from '../../../../utils';
+import { getRandomHEXColor, getSiteNameById } from '../../../../utils/common';
 import { Site, Test } from '../../../../types/types';
 
 type Props = {

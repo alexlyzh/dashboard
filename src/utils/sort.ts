@@ -1,31 +1,6 @@
-import { Site, Test } from './types/types';
-import { SortType, StatusPriority, TestStatus } from './const';
-
-export const getRandomHEXColor = () => {
-  const chars = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += chars[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
-
-const removeWebProtocol = (url: string) => {
-  let handled = '';
-  handled = url.replace('https://', '');
-  handled = handled.replace('http://', '');
-  handled = handled.replace('www.', '');
-  return handled;
-};
-
-export const getSiteNameById = (testId: number, sites: Site[]) => {
-  const testSite = sites.find((site) => site.id === testId);
-  let url = testSite ? testSite.url : null;
-  if (url) {
-    url = removeWebProtocol(url);
-  }
-  return url;
-};
+import { Site, Test } from '../types/types';
+import { SortType, StatusPriority, TestStatus } from '../const';
+import { removeWebProtocol } from './common';
 
 const sortAsc = (tests: Test[], keyName: keyof Test) =>
   tests.slice().sort((a, b) => {
@@ -84,4 +59,27 @@ export const Sort = {
       if (StatusPriority[b.status as TestStatus] < StatusPriority[a.status as TestStatus]) return -1;
       return 0;
     }),
+};
+
+export const sortTests = (sort: SortType | '', tests: Test[], sites: Site[]) => {
+  switch (sort) {
+    case SortType.NameAsc:
+      return Sort[SortType.NameAsc](tests);
+    case SortType.NameDesc:
+      return Sort[SortType.NameDesc](tests);
+    case SortType.TypeAsc:
+      return Sort[SortType.TypeAsc](tests);
+    case SortType.TypeDesc:
+      return Sort[SortType.TypeDesc](tests);
+    case SortType.SiteAsc:
+      return Sort[SortType.SiteAsc](tests, sites);
+    case SortType.SiteDesc:
+      return Sort[SortType.SiteDesc](tests, sites);
+    case SortType.StatusAsc:
+      return Sort[SortType.StatusAsc](tests);
+    case SortType.StatusDesc:
+      return Sort[SortType.StatusDesc](tests);
+    default:
+      return tests;
+  }
 };

@@ -1,6 +1,6 @@
 import Search from './search';
 import { render, screen } from '@testing-library/react';
-import { getMockTest } from '../../../../mock';
+import { getMockTest } from '../../../../utils/mock';
 
 describe('Component: Search', () => {
   it('should render correctly', () => {

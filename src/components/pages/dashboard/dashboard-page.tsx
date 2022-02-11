@@ -5,42 +5,17 @@ import SortForm from './sort-form/sort-form';
 import TestList from './test-list/test-list';
 import TestsContext from '../../../context/tests-context';
 import SitesContext from '../../../context/sites-context';
-import { SortType } from '../../../const';
-import { Sort } from '../../../utils';
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import { useSearch } from '../../../hooks/use-search';
 import { useSort } from '../../../hooks/use-sort';
+import { useProcessedTests } from '../../../hooks/use-processed-tests';
 
 function DashboardPage(): JSX.Element {
   const [tests, isLoadingTests] = useContext(TestsContext);
   const [sites, isLoadingSites] = useContext(SitesContext);
   const {search, handleSearchChange, resetSearch} = useSearch();
   const sort = useSort();
-  const {currentSort} = sort;
-
-  const handledTests = useMemo(() => {
-    const handledList = tests.filter((test) => test.name.toLowerCase().includes(search.toLowerCase()));
-    switch (currentSort) {
-      case SortType.NameAsc:
-        return Sort[SortType.NameAsc](handledList);
-      case SortType.NameDesc:
-        return Sort[SortType.NameDesc](handledList);
-      case SortType.TypeAsc:
-        return Sort[SortType.TypeAsc](handledList);
-      case SortType.TypeDesc:
-        return Sort[SortType.TypeDesc](handledList);
-      case SortType.SiteAsc:
-        return Sort[SortType.SiteAsc](handledList, sites);
-      case SortType.SiteDesc:
-        return Sort[SortType.SiteDesc](handledList, sites);
-      case SortType.StatusAsc:
-        return Sort[SortType.StatusAsc](handledList);
-      case SortType.StatusDesc:
-        return Sort[SortType.StatusDesc](handledList);
-      default:
-        return handledList;
-    }
-  }, [tests, sites, search, currentSort]);
+  const handledTests = useProcessedTests(tests, sites, search, sort.currentSort);
 
   if (isLoadingTests) {
     return <p style={{
@@ -52,7 +27,9 @@ function DashboardPage(): JSX.Element {
       fontFamily: 'Montserrat, sans-serif',
       fontWeight: 500,
       fontSize: 50,
-    }}>Loading...</p>;
+    }}>
+      Loading...
+    </p>;
   }
 
   return (
@@ -68,7 +45,7 @@ function DashboardPage(): JSX.Element {
             />
             <SortForm
               isVisible={Boolean(handledTests.length)}
-              sort={currentSort}
+              sort={sort.currentSort}
               onSortNameClick={sort.handleNameSort}
               onSortSiteClick={sort.handleSiteSort}
               onSortStatusClick={sort.handleStatusSort}
