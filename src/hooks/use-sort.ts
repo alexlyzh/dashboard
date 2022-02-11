@@ -7,7 +7,7 @@ export const useSort = () => {
   const sortNameDesc = () => setCurrentSort(SortType.NameDesc);
   const sortTypeAsc = () => setCurrentSort(SortType.TypeAsc);
   const sortTypeDesc = () => setCurrentSort(SortType.TypeDesc);
-  const sortSiteAsc = () => setCurrentSort(SortType.StatusAsc);
+  const sortSiteAsc = () => setCurrentSort(SortType.SiteAsc);
   const sortSiteDesc = () => setCurrentSort(SortType.SiteDesc);
   const sortStatusAsc = () => setCurrentSort(SortType.StatusAsc);
   const sortStatusDesc = () => setCurrentSort(SortType.StatusDesc);
