@@ -11,13 +11,11 @@ function FinalizePage({testId}: Props): JSX.Element {
   const test = useTest(testId);
 
   return (
-    <>
-      <MainLayout heading={'Finalize'} subHeading={ !test ? 'Loading...' : test.name } >
-        <div className="container">
-          <BackLink to={appPath.root} />
-        </div>
-      </MainLayout>
-    </>
+    <MainLayout heading={'Finalize'} subHeading={ !test ? 'Loading...' : test.name } >
+      <div className="container">
+        <BackLink to={appPath.root} />
+      </div>
+    </MainLayout>
   );
 }
 

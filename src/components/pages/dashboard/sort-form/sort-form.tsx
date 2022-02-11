@@ -1,5 +1,5 @@
 import './sort-form.css';
-import {SortType} from '../../../../const';
+import { SortType } from '../../../../const';
 
 type Props = {
   isVisible: boolean,

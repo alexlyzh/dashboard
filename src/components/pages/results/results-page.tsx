@@ -10,11 +10,9 @@ type Props = {
 function ResultsPage({testId}: Props): JSX.Element {
   const test = useTest(testId);
   return (
-    <>
-      <MainLayout heading={'Results'} subHeading={ !test ? 'Loading...' : test.name } >
-        <BackLink to={appPath.root} />
-      </MainLayout>
-    </>
+    <MainLayout heading={'Results'} subHeading={ !test ? 'Loading...' : test.name } >
+      <BackLink to={appPath.root} />
+    </MainLayout>
   );
 }
 

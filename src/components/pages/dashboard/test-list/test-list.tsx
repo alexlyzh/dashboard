@@ -1,7 +1,7 @@
 import './test-list.css';
 import { generatePath, Link } from 'react-router-dom';
 import { appPath, colorMap, TestStatus, typeMap } from '../../../../const';
-import { getRandomHEXColor, getSiteName } from '../../../../utils';
+import { getRandomHEXColor, getSiteNameById } from '../../../../utils';
 import { Site, Test } from '../../../../types/types';
 
 type Props = {
@@ -24,7 +24,7 @@ function TestList({tests, sites, isLoadingSites, isLoadingTests, onResetBtnClick
 
   return (
     <ul className="test-list">
-      { tests.map(({id, name, type, status}) => {
+      { tests.map(({id, name, type, status, siteId}) => {
         const isResults = status !== TestStatus.DRAFT;
         const pathname = isResults
           ? generatePath(appPath.results, {id})
@@ -44,7 +44,7 @@ function TestList({tests, sites, isLoadingSites, isLoadingTests, onResetBtnClick
             >
               {status.toLowerCase()}
             </span>
-            <span className="test__text" aria-label="Test site">{ isLoadingSites ? 'Loading...' : getSiteName(id, sites) }</span>
+            <span className="test__text" aria-label="Test site">{ isLoadingSites ? 'Loading...' : getSiteNameById(siteId, sites) }</span>
             <Link
               className={`button ${!isResults ? 'button--dark' : ''}`}
               to={pathname}

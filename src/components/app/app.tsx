@@ -15,13 +15,13 @@ function App() {
 
   return (
     <TestsContext.Provider value={testsData}>
-    <SitesContext.Provider value={sitesData}>
-      <Switch>
-        <Route exact path={appPath.root} component={DashboardPage}/>
-        <Route exact path={appPath.finalize} component={FinalizePage}/>
-        <Route exact path={appPath.results} component={ResultsPage}/>
-      </Switch>
-    </SitesContext.Provider>
+      <SitesContext.Provider value={sitesData}>
+        <Switch>
+          <Route exact path={appPath.root} component={DashboardPage}/>
+          <Route exact path={appPath.finalize} component={FinalizePage}/>
+          <Route exact path={appPath.results} component={ResultsPage}/>
+        </Switch>
+      </SitesContext.Provider>
     </TestsContext.Provider>
   );
 }
