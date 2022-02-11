@@ -1,23 +1,22 @@
 import ApiContext from '../context/api-context';
 import { useContext, useEffect, useState } from 'react';
-import { Site } from '../types/types';
-import { apiPath } from '../const';
+import { ApiPath } from '../const';
 
-export const useSites = () => {
+export const useRemoteData = <Type>(url: ApiPath) => {
   const api = useContext(ApiContext);
-  const [sites, setSites] = useState<Site[]>([]);
+  const [data, setData] = useState<Type[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
       if (api) {
         setIsLoading(true);
-        const {data} = await api.get<Site[]>(apiPath.sites);
+        const {data} = await api.get<Type[]>(url);
         setIsLoading(false);
-        setSites(data);
+        setData(data);
       }
     })();
-  }, [api]);
+  }, [api, url]);
 
-  return [sites, isLoading] as [Site[], boolean];
+  return [data, isLoading] as [Type[], boolean];
 };

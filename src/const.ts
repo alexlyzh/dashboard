@@ -4,10 +4,10 @@ export const appPath = <const>{
   results: '/results/:id',
 };
 
-export const apiPath = <const>{
-  sites: '/sites',
-  tests: '/tests',
-};
+export enum ApiPath {
+  sites = '/sites',
+  tests = '/tests',
+}
 
 export enum TestStatus {
   DRAFT = 'DRAFT',

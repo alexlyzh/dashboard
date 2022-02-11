@@ -1,5 +1,5 @@
 import { Site, Test } from './types/types';
-import {SortType, StatusPriority, TestStatus} from './const';
+import { SortType, StatusPriority, TestStatus } from './const';
 
 export const getRandomHEXColor = () => {
   const chars = '0123456789ABCDEF';

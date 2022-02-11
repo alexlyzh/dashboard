@@ -5,13 +5,13 @@ import ResultsPage from '../pages/results/results-page';
 import TestsContext from '../../context/tests-context';
 import SitesContext from '../../context/sites-context';
 import { Route, Switch } from 'react-router-dom';
-import { appPath } from '../../const';
-import { useTests } from '../../hooks/use-tests';
-import { useSites } from '../../hooks/use-sites';
+import { useRemoteData } from '../../hooks/use-remote-data';
+import { ApiPath, appPath } from '../../const';
+import { Test, Site } from '../../types/types';
 
 function App() {
-  const testsData = useTests();
-  const sitesData = useSites();
+  const testsData = useRemoteData<Test>(ApiPath.tests);
+  const sitesData = useRemoteData<Site>(ApiPath.sites);
 
   return (
     <TestsContext.Provider value={testsData}>
