@@ -6,7 +6,11 @@ type Props = {
 }
 
 function BackLink({to}: Props): JSX.Element {
-  return <Link className="back-link" to={to}>Back</Link>;
+  return (
+    <div className="container back-link-container">
+      <Link className="back-link" to={to}>Back</Link>
+    </div>
+  );
 }
 
 export default BackLink;

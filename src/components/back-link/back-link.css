@@ -1,6 +1,12 @@
+.back-link-container {
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
 .back-link {
   position: relative;
   display: inline-block;
+  flex: 1;
   height: 25px;
   font-family: Nunito, sans-serif;
   font-weight: 700;
@@ -8,15 +14,14 @@
   line-height: 25px;
   text-decoration: none;
   color: #222;
-
-  margin-left: 25px;
+  padding-left: 25px;
 }
 
 .back-link::before {
   position: absolute;
   content: '';
   top: 3px;
-  left: -25px;
+  left: 0;
   height: 16px;
   width: 10px;
   background-repeat: no-repeat;

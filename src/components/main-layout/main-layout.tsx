@@ -4,12 +4,13 @@ import './main-layout.css';
 type Props = {
   heading: string,
   children?: ReactNode,
+  pageClassName?: string,
   subHeading?: string,
 }
 
-function MainLayout({children, heading, subHeading}: Props): JSX.Element {
+function MainLayout({heading, children, pageClassName, subHeading}: Props): JSX.Element {
   return (
-    <div className="page">
+    <div className={`page ${pageClassName ? pageClassName : ''}`}>
       <header>
         <div className="container">
           <h1 className="header__heading">{heading}</h1>

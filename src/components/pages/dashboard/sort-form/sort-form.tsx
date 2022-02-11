@@ -27,7 +27,7 @@ function SortForm(props: Props): JSX.Element | null {
       <ul className="sort">
         <li>
           <button className="sort__button" type="button" onClick={onSortNameClick}>
-            Name
+            <span>Name</span>
             { sort === SortType.NameAsc || sort === SortType.NameDesc
               ? <div className={`sort__arrow ${isSortDesc ? 'sort__arrow--desc' : ''}`}/>
               : null}
@@ -35,7 +35,7 @@ function SortForm(props: Props): JSX.Element | null {
         </li>
         <li>
           <button className="sort__button" type="button" onClick={onSortTypeClick}>
-            Type
+            <span>Type</span>
             { sort === SortType.TypeAsc || sort === SortType.TypeDesc
               ? <div className={`sort__arrow ${isSortDesc ? 'sort__arrow--desc' : ''}`}/>
               : null}
@@ -43,7 +43,7 @@ function SortForm(props: Props): JSX.Element | null {
         </li>
         <li>
           <button className="sort__button" type="button" onClick={onSortStatusClick}>
-            Status
+            <span>Status</span>
             { sort === SortType.StatusAsc || sort === SortType.StatusDesc
               ? <div className={`sort__arrow ${isSortDesc ? 'sort__arrow--desc' : ''}`}/>
               : null}
@@ -51,7 +51,7 @@ function SortForm(props: Props): JSX.Element | null {
         </li>
         <li>
           <button className="sort__button" type="button" onClick={onSortSiteClick}>
-            Site
+            <span>Site</span>
             { sort === SortType.SiteAsc || sort === SortType.SiteDesc
               ? <div className={`sort__arrow ${isSortDesc ? 'sort__arrow--desc' : ''}`}/>
               : null}

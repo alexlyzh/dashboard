@@ -1,19 +1,19 @@
+import './dashboard-page.css';
 import MainLayout from '../../main-layout/main-layout';
 import Search from './search/search';
 import SortForm from './sort-form/sort-form';
 import TestList from './test-list/test-list';
-import './dashboard-page.css';
-import {SortType} from '../../../const';
-import {Sort} from '../../../utils';
-import {useMemo} from 'react';
-import {useSites} from '../../../hooks/use-sites';
-import {useTests} from '../../../hooks/use-tests';
-import {useSearch} from '../../../hooks/use-search';
-import {useSort} from '../../../hooks/use-sort';
+import TestsContext from '../../../context/tests-context';
+import SitesContext from '../../../context/sites-context';
+import { SortType } from '../../../const';
+import { Sort } from '../../../utils';
+import { useContext, useMemo } from 'react';
+import { useSearch } from '../../../hooks/use-search';
+import { useSort } from '../../../hooks/use-sort';
 
 function DashboardPage(): JSX.Element {
-  const [tests, isLoadingTests] = useTests();
-  const [sites, isLoadingSites] = useSites();
+  const [tests, isLoadingTests] = useContext(TestsContext);
+  const [sites, isLoadingSites] = useContext(SitesContext);
   const {search, handleSearchChange, resetSearch} = useSearch();
   const sort = useSort();
   const {currentSort} = sort;
@@ -43,7 +43,7 @@ function DashboardPage(): JSX.Element {
   }, [tests, sites, search, currentSort]);
 
   return (
-    <MainLayout heading={'Dashboard'} >
+    <MainLayout pageClassName="page__dashboard" heading={'Dashboard'} >
       <section aria-label="Tests">
         <div className="container">
           <div className="dashboard">

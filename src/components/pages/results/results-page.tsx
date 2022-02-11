@@ -1,15 +1,19 @@
 import MainLayout from '../../main-layout/main-layout';
 import BackLink from '../../back-link/back-link';
-import Footer from '../../footer/footer';
 import { appPath } from '../../../const';
+import { useTest } from '../../../hooks/use-test';
 
-function ResultsPage(): JSX.Element {
+type Props = {
+  testId?: number,
+}
+
+function ResultsPage({testId}: Props): JSX.Element {
+  const test = useTest(testId);
   return (
     <>
-      <MainLayout heading={'Results'} subHeading={'Order basket redesign'} />
-      <Footer>
+      <MainLayout heading={'Results'} subHeading={ !test ? 'Loading...' : test.name } >
         <BackLink to={appPath.root} />
-      </Footer>
+      </MainLayout>
     </>
   );
 }

@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: flex-start;
 
-  padding: 0;
+  padding: 0 10px 0 0;
   font-weight: 500;
   font-size: 11px;
   line-height: 15px;
@@ -26,16 +26,16 @@
 .sort__arrow {
   position: absolute;
   top: 50%;
-  right: -10px;
+  right: 0;
   width: 5px;
   height: 5px;
   border-left: 1px solid #999999;
   border-top: 1px solid #999999;
-
   transform: rotate(45deg) translateY(-50%);
+  transition: all 150ms;
 }
 
 .sort__arrow--desc {
-  right: -7px;
+  right: 3px;
   transform: rotate(225deg) translateY(130%);
 }
