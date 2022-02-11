@@ -30,13 +30,13 @@ function DashboardPage(): JSX.Element {
       case SortType.TypeDesc:
         return Sort[SortType.TypeDesc](handledList);
       case SortType.SiteAsc:
-        return Sort[SortType.SiteAsc](tests, sites);
+        return Sort[SortType.SiteAsc](handledList, sites);
       case SortType.SiteDesc:
-        return Sort[SortType.SiteDesc](tests, sites);
+        return Sort[SortType.SiteDesc](handledList, sites);
       case SortType.StatusAsc:
-        return Sort[SortType.StatusAsc](tests);
+        return Sort[SortType.StatusAsc](handledList);
       case SortType.StatusDesc:
-        return Sort[SortType.StatusDesc](tests);
+        return Sort[SortType.StatusDesc](handledList);
       default:
         return handledList;
     }
