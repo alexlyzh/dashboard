@@ -42,6 +42,19 @@ function DashboardPage(): JSX.Element {
     }
   }, [tests, sites, search, currentSort]);
 
+  if (isLoadingTests) {
+    return <p style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '50vh',
+      fontFamily: 'Montserrat, sans-serif',
+      fontWeight: 500,
+      fontSize: 50,
+    }}>Loading...</p>;
+  }
+
   return (
     <MainLayout pageClassName="page__dashboard" heading={'Dashboard'} >
       <section aria-label="Tests">

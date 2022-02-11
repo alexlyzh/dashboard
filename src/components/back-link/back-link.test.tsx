@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { appPath } from '../../const';
 
 describe('Component: BackLink', () => {
-  it('should render correctly', () => {
+  it('should redirect on link click', () => {
     render(
       <BrowserRouter>
         <Switch>
