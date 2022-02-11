@@ -10,6 +10,17 @@ import { useSearch } from '../../../hooks/use-search';
 import { useSort } from '../../../hooks/use-sort';
 import { useProcessedTests } from '../../../hooks/use-processed-tests';
 
+const loadingStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '50vh',
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 500,
+  fontSize: 50,
+} as const;
+
 function DashboardPage(): JSX.Element {
   const [tests, isLoadingTests] = useContext(TestsContext);
   const [sites, isLoadingSites] = useContext(SitesContext);
@@ -18,18 +29,7 @@ function DashboardPage(): JSX.Element {
   const handledTests = useProcessedTests(tests, sites, search, sort.currentSort);
 
   if (isLoadingTests) {
-    return <p style={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '50vh',
-      fontFamily: 'Montserrat, sans-serif',
-      fontWeight: 500,
-      fontSize: 50,
-    }}>
-      Loading...
-    </p>;
+    return <p style={loadingStyle}>Loading...</p>;
   }
 
   return (
