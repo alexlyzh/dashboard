@@ -2,7 +2,7 @@
   position: relative;
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: var(--name-width) var(--type-width) var(--type-width) var(--site-width);
+  grid-template-columns: 3fr var(--type-width) var(--status-width) var(--site-width) 100px;
   grid-template-rows: min-content;
   grid-column-gap: 25px;
   align-items: center;
@@ -40,6 +40,17 @@
   font-size: 12px;
   line-height: 14px;
   color: #5C5C5C;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.test__site-link {
+  text-decoration: none;
+}
+
+.test__site-link:hover {
+  color: dodgerblue;
 }
 
 .test__status {

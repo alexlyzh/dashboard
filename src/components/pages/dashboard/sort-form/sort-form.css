@@ -1,7 +1,7 @@
 .sort {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: var(--name-width) var(--type-width) var(--type-width) var(--site-width);
+  grid-template-columns: 3fr var(--type-width) var(--status-width) var(--site-width) 100px;
   grid-column-gap: 25px;
   padding: 0 15px;
   margin-top: 30px;

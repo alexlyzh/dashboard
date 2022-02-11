@@ -30,6 +30,11 @@ function TestList({tests, sites, isLoadingSites, isLoadingTests, onResetBtnClick
           ? generatePath(appPath.results, {id})
           : generatePath(appPath.finalize, {id});
 
+        const getTestSiteLink = (id: number) => {
+          const site = sites.find((site) => site.id === id);
+          return site ? site.url : '#';
+        };
+
         return (
           <li className="test" key={id}>
             <div className="test__mark" style={{backgroundColor: getRandomHEXColor()}}/>
@@ -44,7 +49,13 @@ function TestList({tests, sites, isLoadingSites, isLoadingTests, onResetBtnClick
             >
               {status.toLowerCase()}
             </span>
-            <span className="test__text" aria-label="Test site">{ isLoadingSites ? 'Loading...' : getSiteNameById(siteId, sites) }</span>
+            <a
+              className="test__text test__site-link"
+              href={getTestSiteLink(siteId)} aria-label="Test site"
+              target="_blank"
+            >
+              { isLoadingSites ? 'Loading...' : getSiteNameById(siteId, sites) }
+            </a>
             <Link
               className={`button ${!isResults ? 'button--dark' : ''}`}
               to={pathname}

@@ -3,8 +3,7 @@
 }
 
 .dashboard {
-  --name-width: 390px;
   --type-width: 100px;
-  --status-width: 60px;
+  --status-width: 65px;
   --site-width: 120px;
 }

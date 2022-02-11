@@ -49,6 +49,8 @@ fieldset {
 .container {
   min-width: 720px;
   max-width: 960px;
+  padding-left: 15px;
+  padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
