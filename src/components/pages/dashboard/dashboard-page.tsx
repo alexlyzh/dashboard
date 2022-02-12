@@ -5,12 +5,10 @@ import SortForm from './sort-form/sort-form';
 import TestList from './test-list/test-list';
 import TestsContext from '../../../context/tests-context';
 import SitesContext from '../../../context/sites-context';
+import { useContext } from 'react';
 import { useSearch } from '../../../hooks/use-search';
 import { useSort } from '../../../hooks/use-sort';
 import { useProcessedTests } from '../../../hooks/use-processed-tests';
-import { useRemoteData } from '../../../hooks/use-remote-data';
-import { Site, Test } from '../../../types/types';
-import { ApiPath } from '../../../const';
 
 const loadingStyle = {
   display: 'flex',
@@ -24,8 +22,8 @@ const loadingStyle = {
 } as const;
 
 function DashboardPage(): JSX.Element {
-  const [tests, isLoadingTests] = useRemoteData<Test>(ApiPath.tests);
-  const [sites, isLoadingSites] = useRemoteData<Site>(ApiPath.sites);
+  const [tests, isLoadingTests] = useContext(TestsContext);
+  const [sites, isLoadingSites] = useContext(SitesContext);
   const {search, handleSearchChange, resetSearch} = useSearch();
   const sort = useSort();
   const handledTests = useProcessedTests(tests, sites, search, sort.currentSort);

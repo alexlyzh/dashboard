@@ -34,7 +34,7 @@ export const useTest = () => {
         setTest(data);
       })();
     }
-  }, [test, api]);
+  }, [test, api, id]);
 
   return [test, isLoading] as [Test | null, boolean];
 };
