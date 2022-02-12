@@ -5,7 +5,7 @@ import ResultsPage from '../pages/results/results-page';
 import { Route, Switch } from 'react-router-dom';
 import { AppPath } from '../../const';
 
-function App() {
+function App(): JSX.Element {
   return (
     <Switch>
       <Route exact path={AppPath.root} component={DashboardPage}/>

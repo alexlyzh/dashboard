@@ -3,12 +3,8 @@ import BackLink from '../../back-link/back-link';
 import { AppPath } from '../../../const';
 import { useTest } from '../../../hooks/use-test';
 
-type Props = {
-  testId?: number,
-}
-
-function FinalizePage({testId}: Props): JSX.Element {
-  const [test, isLoading] = useTest(testId);
+function FinalizePage(): JSX.Element {
+  const [test, isLoading] = useTest();
   return (
     <MainLayout heading={'Finalize'} subHeading={ isLoading || !test ? 'Loading...' : test.name } >
       <div className="container">

@@ -1,3 +1,8 @@
+import { TestStatus } from '../const';
+import { Test } from '../types/types';
+
+const testStatuses: (keyof typeof TestStatus)[] = ['DRAFT', 'ONLINE', 'STOPPED', 'PAUSED'];
+
 export const getRandomInteger = (min = 0, max = 1): number => {
   const lower = Math.ceil(Math.min(min, max));
   const upper = Math.floor(Math.max(min, max));
@@ -13,15 +18,28 @@ export const getRandomString = (length: number) => {
   return result;
 };
 
-export const getMockTest = () => ({
+export const getMockSite = (siteId?: number) => ({
+  id: siteId ? siteId : getRandomInteger(0, 10),
+  url: `https://${getRandomString(getRandomInteger(0, 10))}.com`,
+});
+
+export const getMockTest = (siteId?: number) => ({
   id: getRandomInteger(0, 10),
   name: getRandomString(getRandomInteger(0, 10)),
   type: getRandomString(getRandomInteger(0, 10)),
-  status: getRandomString(getRandomInteger(0, 10)),
-  siteId: getRandomInteger(0, 10),
+  status: testStatuses[getRandomInteger(0, testStatuses.length - 1)],
+  siteId: siteId ? siteId : getRandomInteger(0, 10),
 });
 
-export const getMockSite = () => ({
-  id: getRandomInteger(0, 10),
-  url: `https://${getRandomString(getRandomInteger(0, 10))}.com`,
-});
+export const getSeveralMockTests = (count: number, siteId?: number) => {
+  const uniqueIds: number[] = [];
+  const tests: Test[] = [];
+  while (tests.length !== count) {
+    const test = getMockTest(siteId);
+    if (!uniqueIds.includes(test.id)) {
+      tests.push(test);
+      uniqueIds.push(test.id);
+    }
+  }
+  return tests;
+};

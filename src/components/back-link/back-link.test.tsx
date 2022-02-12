@@ -1,27 +1,31 @@
 import BackLink from './back-link';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { AppPath } from '../../const';
+import { Router, Switch, Route } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+
+const history = createMemoryHistory();
 
 describe('Component: BackLink', () => {
   it('should redirect on link click', () => {
+    history.push('/current-page');
+
     render(
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route path={AppPath.root}>
-            This is root page
+          <Route exact path={'/previous-page'}>
+            This is previous page
           </Route>
         </Switch>
-        <Route>
+        <Route exact path={'/current-page'}>
           This is current page
-          <BackLink to={AppPath.root} />
+          <BackLink to={'/previous-page'} />
         </Route>
-      </BrowserRouter>
+      </Router>
     );
 
-    expect(screen.getByText(/current page/)).toBeInTheDocument();
-    userEvent.click(screen.getByText('Back'));
-    expect(screen.getByText(/root page/)).toBeInTheDocument();
+    expect(screen.getByText(/current page/i)).toBeInTheDocument();
+    userEvent.click(screen.getByText(/back/i));
+    expect(screen.getByText(/previous page/i)).toBeInTheDocument();
   });
 });

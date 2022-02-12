@@ -9,13 +9,13 @@ type PageParams = {
   id: string,
 }
 
-export const useTest = (testId?: string | number) => {
+export const useTest = () => {
   const api = useContext(ApiContext);
   const [tests] = useContext(TestsContext);
   const [test, setTest] = useState<Test | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const params: PageParams = useParams();
-  const id = Number(testId ? testId : params.id);
+  const params = useParams<PageParams>();
+  const id = Number(params.id);
 
   const foundTest = tests.find((test) => test.id === id);
 
@@ -23,7 +23,7 @@ export const useTest = (testId?: string | number) => {
     if (foundTest) {
       setTest(foundTest);
     }
-  }, [foundTest])
+  }, [foundTest, setTest])
 
   useEffect(() => {
     if (!test && api) {

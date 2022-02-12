@@ -36,7 +36,7 @@ function TestList({tests, sites, isLoadingSites, isLoadingTests, onResetBtnClick
         };
 
         return (
-          <li className="test" key={id}>
+          <li className="test" aria-label="Test card" key={id}>
             <div className="test__mark" style={{backgroundColor: getRandomHEXColor()}}/>
             <p className="test__name" aria-label="Test name">{ name }</p>
             <span className="test__text" aria-label="Test type">
