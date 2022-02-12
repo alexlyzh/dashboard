@@ -5,10 +5,12 @@ import SortForm from './sort-form/sort-form';
 import TestList from './test-list/test-list';
 import TestsContext from '../../../context/tests-context';
 import SitesContext from '../../../context/sites-context';
-import { useContext } from 'react';
 import { useSearch } from '../../../hooks/use-search';
 import { useSort } from '../../../hooks/use-sort';
 import { useProcessedTests } from '../../../hooks/use-processed-tests';
+import { useRemoteData } from '../../../hooks/use-remote-data';
+import { Site, Test } from '../../../types/types';
+import { ApiPath } from '../../../const';
 
 const loadingStyle = {
   display: 'flex',
@@ -22,8 +24,8 @@ const loadingStyle = {
 } as const;
 
 function DashboardPage(): JSX.Element {
-  const [tests, isLoadingTests] = useContext(TestsContext);
-  const [sites, isLoadingSites] = useContext(SitesContext);
+  const [tests, isLoadingTests] = useRemoteData<Test>(ApiPath.tests);
+  const [sites, isLoadingSites] = useRemoteData<Site>(ApiPath.sites);
   const {search, handleSearchChange, resetSearch} = useSearch();
   const sort = useSort();
   const handledTests = useProcessedTests(tests, sites, search, sort.currentSort);
@@ -33,35 +35,39 @@ function DashboardPage(): JSX.Element {
   }
 
   return (
-    <MainLayout pageClassName="page__dashboard" heading={'Dashboard'} >
-      <section aria-label="Tests">
-        <div className="container">
-          <div className="dashboard">
-            <Search
-              tests={handledTests}
-              isLoadingTests={isLoadingTests}
-              search={search}
-              onSearchInput={handleSearchChange}
-            />
-            <SortForm
-              isVisible={Boolean(handledTests.length)}
-              sort={sort.currentSort}
-              onSortNameClick={sort.handleNameSort}
-              onSortSiteClick={sort.handleSiteSort}
-              onSortStatusClick={sort.handleStatusSort}
-              onSortTypeClick={sort.handleTypeSort}
-            />
-            <TestList
-              tests={handledTests}
-              sites={sites}
-              isLoadingSites={isLoadingSites}
-              isLoadingTests={isLoadingTests}
-              onResetBtnClick={resetSearch}
-            />
-          </div>
-        </div>
-      </section>
-    </MainLayout>
+    <TestsContext.Provider value={[tests, isLoadingTests]}>
+      <SitesContext.Provider value={[sites, isLoadingSites]}>
+        <MainLayout pageClassName="page__dashboard" heading={'Dashboard'} >
+          <section aria-label="Tests">
+            <div className="container">
+              <div className="dashboard">
+                <Search
+                  tests={handledTests}
+                  isLoadingTests={isLoadingTests}
+                  search={search}
+                  onSearchInput={handleSearchChange}
+                />
+                <SortForm
+                  isVisible={Boolean(handledTests.length)}
+                  sort={sort.currentSort}
+                  onSortNameClick={sort.handleNameSort}
+                  onSortSiteClick={sort.handleSiteSort}
+                  onSortStatusClick={sort.handleStatusSort}
+                  onSortTypeClick={sort.handleTypeSort}
+                />
+                <TestList
+                  tests={handledTests}
+                  sites={sites}
+                  isLoadingSites={isLoadingSites}
+                  isLoadingTests={isLoadingTests}
+                  onResetBtnClick={resetSearch}
+                />
+              </div>
+            </div>
+          </section>
+        </MainLayout>
+      </SitesContext.Provider>
+    </TestsContext.Provider>
   );
 }
 

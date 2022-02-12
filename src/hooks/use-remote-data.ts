@@ -5,18 +5,18 @@ import { ApiPath } from '../const';
 export const useRemoteData = <Type>(url: ApiPath) => {
   const api = useContext(ApiContext);
   const [data, setData] = useState<Type[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
       if (api) {
-        setIsLoading(true);
+        setLoading(true);
         const {data} = await api.get<Type[]>(url);
-        setIsLoading(false);
+        setLoading(false);
         setData(data);
       }
     })();
   }, [api, url]);
 
-  return [data, isLoading] as [Type[], boolean];
+  return [data, loading] as [Type[], boolean];
 };

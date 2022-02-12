@@ -1,6 +1,6 @@
 import './test-list.css';
 import { generatePath, Link } from 'react-router-dom';
-import { appPath, colorMap, TestStatus, typeMap } from '../../../../const';
+import { AppPath, color, TestStatus, testType } from '../../../../const';
 import { getRandomHEXColor, getSiteNameById } from '../../../../utils/common';
 import { Site, Test } from '../../../../types/types';
 
@@ -27,8 +27,8 @@ function TestList({tests, sites, isLoadingSites, isLoadingTests, onResetBtnClick
       { tests.map(({id, name, type, status, siteId}) => {
         const isResults = status !== TestStatus.DRAFT;
         const pathname = isResults
-          ? generatePath(appPath.results, {id})
-          : generatePath(appPath.finalize, {id});
+          ? generatePath(AppPath.results, {id})
+          : generatePath(AppPath.finalize, {id});
 
         const getTestSiteLink = (id: number) => {
           const site = sites.find((site) => site.id === id);
@@ -40,11 +40,11 @@ function TestList({tests, sites, isLoadingSites, isLoadingTests, onResetBtnClick
             <div className="test__mark" style={{backgroundColor: getRandomHEXColor()}}/>
             <p className="test__name" aria-label="Test name">{ name }</p>
             <span className="test__text" aria-label="Test type">
-              { typeMap[type.toLowerCase() as keyof typeof typeMap] }
+              { testType[type.toLowerCase() as keyof typeof testType] }
             </span>
             <span
               className="test__text test__status"
-              style={{color: colorMap[status.toLowerCase() as keyof typeof colorMap]}}
+              style={{color: color[status.toLowerCase() as keyof typeof color]}}
               aria-label="Test status"
             >
               {status.toLowerCase()}

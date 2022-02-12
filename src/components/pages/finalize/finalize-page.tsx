@@ -1,6 +1,6 @@
 import MainLayout from '../../main-layout/main-layout';
 import BackLink from '../../back-link/back-link';
-import { appPath } from '../../../const';
+import { AppPath } from '../../../const';
 import { useTest } from '../../../hooks/use-test';
 
 type Props = {
@@ -8,12 +8,11 @@ type Props = {
 }
 
 function FinalizePage({testId}: Props): JSX.Element {
-  const test = useTest(testId);
-
+  const [test, isLoading] = useTest(testId);
   return (
-    <MainLayout heading={'Finalize'} subHeading={ !test ? 'Loading...' : test.name } >
+    <MainLayout heading={'Finalize'} subHeading={ isLoading || !test ? 'Loading...' : test.name } >
       <div className="container">
-        <BackLink to={appPath.root} />
+        <BackLink to={AppPath.root} />
       </div>
     </MainLayout>
   );

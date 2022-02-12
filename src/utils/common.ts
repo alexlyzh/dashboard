@@ -25,4 +25,3 @@ export const getSiteNameById = (testId: number, sites: Site[]) => {
   }
   return url;
 };
-

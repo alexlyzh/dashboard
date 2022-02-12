@@ -2,20 +2,20 @@ import BackLink from './back-link';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { appPath } from '../../const';
+import { AppPath } from '../../const';
 
 describe('Component: BackLink', () => {
   it('should redirect on link click', () => {
     render(
       <BrowserRouter>
         <Switch>
-          <Route path={appPath.root}>
+          <Route path={AppPath.root}>
             This is root page
           </Route>
         </Switch>
         <Route>
           This is current page
-          <BackLink to={appPath.root} />
+          <BackLink to={AppPath.root} />
         </Route>
       </BrowserRouter>
     );
