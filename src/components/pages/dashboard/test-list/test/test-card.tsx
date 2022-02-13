@@ -18,7 +18,7 @@ const getSiteNameById = (testId: number, sites: Site[]) => {
 function TestCard({test, sites, isLoadingSites}: Props): JSX.Element {
   const {id, name, type, status, siteId} = test;
 
-  const isResultsPageRedirect = status !== TestStatus.DRAFT.toLowerCase();
+  const isResultsPageRedirect = status !== TestStatus.Draft.toLowerCase();
   const pathname = isResultsPageRedirect
     ? generatePath(AppPath.results, {id})
     : generatePath(AppPath.finalize, {id});

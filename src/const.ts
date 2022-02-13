@@ -12,10 +12,10 @@ export enum ApiPath {
 }
 
 export enum TestStatus {
-  DRAFT = 'DRAFT',
-  PAUSED = 'PAUSED',
-  ONLINE = 'ONLINE',
-  STOPPED = 'STOPPED',
+  Draft = 'draft',
+  Paused = 'paused',
+  Online = 'online',
+  Stopped = 'stopped',
 }
 
 export enum SortType {
@@ -34,10 +34,10 @@ export enum KeyboardKey {
 }
 
 export const StatusPriority = <const>{
-  [TestStatus.ONLINE]: 1,
-  [TestStatus.PAUSED]: 2,
-  [TestStatus.STOPPED]: 3,
-  [TestStatus.DRAFT]: 4,
+  [TestStatus.Online]: 1,
+  [TestStatus.Paused]: 2,
+  [TestStatus.Stopped]: 3,
+  [TestStatus.Draft]: 4,
 };
 
 export const color = <const>{

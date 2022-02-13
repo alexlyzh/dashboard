@@ -1,7 +1,7 @@
 import { TestStatus, testType } from '../const';
 import { Test } from '../types/types';
 
-const testStatuses: (keyof typeof TestStatus)[] = ['DRAFT', 'ONLINE', 'STOPPED', 'PAUSED'];
+const testStatuses: (keyof typeof TestStatus)[] = ['Draft', 'Online', 'Stopped', 'Paused'];
 const testTypes: (keyof typeof testType)[] = ['classic', 'mvt', 'server_side'];
 
 export const getRandomInteger = (min = 0, max = 1): number => {
