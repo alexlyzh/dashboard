@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^7.0.2",
     "@types/react-router-dom": "^5.3.3",
     "eslint-config-htmlacademy": "^5.0.0",
     "typescript": "^4.5.5"

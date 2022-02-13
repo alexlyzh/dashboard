@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SortType } from '../const';
+import { SortType } from '../../const';
 
 export const useSort = () => {
   const [currentSort, setCurrentSort] = useState<SortType | ''>('');

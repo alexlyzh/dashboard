@@ -7,7 +7,7 @@ import TestsContext from '../../../context/tests-context';
 import SitesContext from '../../../context/sites-context';
 import { useContext, useMemo } from 'react';
 import { useSearch } from '../../../hooks/use-search';
-import { useSort } from '../../../hooks/use-sort';
+import { useSort } from '../../../hooks/use-sort/use-sort';
 import { sortTests } from '../../../utils/sort';
 import { Test } from '../../../types/types';
 
