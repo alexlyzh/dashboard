@@ -1,11 +1,11 @@
 import { ChangeEvent, useState, useCallback, useEffect } from 'react';
-import { KeyboardKey } from '../const';
+import { KeyboardKey } from '../../const';
 
 export const useSearch = () => {
   const [search, setSearch] = useState<string>('');
 
   const handleSearchChange = ({target}: ChangeEvent<HTMLInputElement>) => {
-    setSearch(target.value.toLowerCase());
+    setSearch(target.value);
   };
 
   const resetSearch = () => setSearch('');
