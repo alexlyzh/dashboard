@@ -1,8 +1,8 @@
-import ApiContext from '../context/api-context';
+import ApiContext from '../../context/api-context';
 import { useContext, useEffect, useState, Dispatch, SetStateAction } from 'react';
-import { ApiPath } from '../const';
+import { ApiPath } from '../../const';
 
-export const useRemoteData = <Type>(
+export const useRemoteData = <Type = any>(
   url: ApiPath,
   shouldLoadData: boolean,
   adaptToClient: (data: Type) => Type,
@@ -10,22 +10,25 @@ export const useRemoteData = <Type>(
 ) => {
   const api = useContext(ApiContext);
   const [remoteData, setRemoteData] = useState<Type[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (shouldLoadData && api) {
       (async () => {
-        setLoading(true);
-        const {data} = await api.get<Type[]>(url);
-        const adaptedData = data.map(adaptToClient);
-        setLoading(false);
-        setRemoteData(adaptedData);
-        onSuccess && onSuccess();
+        setIsLoading(true);
+        try {
+          const {data} = await api.get<Type[]>(url);
+          const adaptedData = data.map(adaptToClient);
+          setRemoteData(adaptedData);
+          onSuccess && onSuccess();
+        } finally {
+          setIsLoading(false);
+        }
       })();
     }
   }, [api, url, shouldLoadData, adaptToClient, onSuccess]);
 
-  return [remoteData, loading, setRemoteData, setLoading] as [
+  return [remoteData, isLoading, setRemoteData, setIsLoading] as [
     Type[],
     boolean,
     Dispatch<SetStateAction<Type[]>>,

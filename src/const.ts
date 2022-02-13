@@ -33,6 +33,10 @@ export enum KeyboardKey {
   ESC = 'Escape',
 }
 
+export enum HttpCode {
+  OK = 200,
+}
+
 export const StatusPriority = <const>{
   [TestStatus.online]: 1,
   [TestStatus.paused]: 2,

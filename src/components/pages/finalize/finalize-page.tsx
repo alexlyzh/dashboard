@@ -1,7 +1,7 @@
 import MainLayout from '../../main-layout/main-layout';
 import BackLink from '../../back-link/back-link';
 import { AppPath } from '../../../const';
-import { useTest } from '../../../hooks/use-test';
+import { useTest } from '../../../hooks/use-test/use-test';
 
 function FinalizePage(): JSX.Element {
   const [test, isLoading] = useTest();

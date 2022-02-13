@@ -3,19 +3,19 @@ import FinalizePage from '../pages/finalize/finalize-page';
 import ResultsPage from '../pages/results/results-page';
 import TestsContext from '../../context/tests-context';
 import SitesContext from '../../context/sites-context';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
-import { useRemoteData } from '../../hooks/use-remote-data';
+import { useRemoteData } from '../../hooks/use-remote-data/use-remote-data';
 import { ApiPath, AppPath } from '../../const';
 import { adaptTestToClient, adaptSiteToClient } from '../../utils/adapters';
 import { Site, Test } from '../../types/types';
 
 function App(): JSX.Element {
-  const [isAppInit, setIsAppInit] = useState<boolean>(false);
-  const initializeApp = () => setIsAppInit(true);
-
   const location = useLocation();
-  const shouldLoadData = !isAppInit && (location.pathname === AppPath.root);
+  const [isAppInit, setIsAppInit] = useState<boolean>(false);
+  const initializeApp = useMemo(() => () => setIsAppInit(true), [setIsAppInit]);
+  const shouldLoadData = useMemo(() => !isAppInit && (location.pathname === AppPath.root), [isAppInit, location.pathname]);
+
   const testsData = useRemoteData<Test>(ApiPath.tests, shouldLoadData, adaptTestToClient, initializeApp);
   const sitesData = useRemoteData<Site>(ApiPath.sites, shouldLoadData, adaptSiteToClient);
 
