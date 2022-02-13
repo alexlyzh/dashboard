@@ -1,8 +1,9 @@
 import ApiContext from '../context/api-context';
 import TestsContext from '../context/tests-context';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { generatePath, useParams } from 'react-router-dom';
 import { ApiPath } from '../const';
+import { adaptTestToClient } from '../utils/adapters';
 import { Test } from '../types/types';
 
 type PageParams = {
@@ -11,30 +12,25 @@ type PageParams = {
 
 export const useTest = () => {
   const api = useContext(ApiContext);
-  const [tests] = useContext(TestsContext);
-  const [test, setTest] = useState<Test | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [tests, isLoading, setTests, setIsLoading] = useContext(TestsContext);
+  const shouldLoadTest = !isLoading && !tests.length;
+
   const params = useParams<PageParams>();
   const id = Number(params.id);
 
-  const foundTest = tests.find((test) => test.id === id);
+  const test = useMemo(() => tests.find((item) => item.id === id), [id, tests]);
 
   useEffect(() => {
-    if (foundTest) {
-      setTest(foundTest);
-    }
-  }, [foundTest, setTest])
-
-  useEffect(() => {
-    if (!test && api) {
+    if (shouldLoadTest && id && api && setIsLoading && setTests) {
+      setIsLoading(true);
       (async () => {
-        setIsLoading(true);
-        const {data} = await api.get<Test>(generatePath(ApiPath.test, {id}));
+        const {data} = await api.get<Test>(generatePath(ApiPath.test, { id }));
+        const adaptedTest = adaptTestToClient(data);
         setIsLoading(false);
-        setTest(data);
+        setTests([adaptedTest]);
       })();
     }
-  }, [test, api, id]);
+  }, [shouldLoadTest, id, api, setIsLoading, setTests]);
 
-  return [test, isLoading] as [Test | null, boolean];
+  return [test, isLoading] as [Test | undefined, boolean];
 };

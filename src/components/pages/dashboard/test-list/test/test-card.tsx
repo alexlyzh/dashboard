@@ -1,6 +1,6 @@
-import './test-card.css'
+import './test-card.css';
 import { generatePath, Link } from 'react-router-dom';
-import { getRandomHEXColor } from '../../../../../utils/common';
+import { getRandomHEXColor, removeWebProtocol } from '../../../../../utils/common';
 import { AppPath, color, redirectBtnName, TestStatus } from '../../../../../const';
 import { Site, Test } from '../../../../../types/types';
 
@@ -12,7 +12,12 @@ type Props = {
 
 const getSiteNameById = (testId: number, sites: Site[]) => {
   const testSite = sites.find((site) => site.id === testId);
-  return testSite ? testSite.url : null;
+  return testSite ? removeWebProtocol(testSite.url) : null;
+};
+
+const getTestSiteLink = (siteId: number, sites: Site[]) => {
+  const site = sites.find((item) => item.id === siteId);
+  return site ? site.url : '#';
 };
 
 function TestCard({test, sites, isLoadingSites}: Props): JSX.Element {
@@ -22,11 +27,6 @@ function TestCard({test, sites, isLoadingSites}: Props): JSX.Element {
   const pathname = isResultsPageRedirect
     ? generatePath(AppPath.results, {id})
     : generatePath(AppPath.finalize, {id});
-
-  const getTestSiteLink = (id: number) => {
-    const site = sites.find((site) => site.id === id);
-    return site ? site.url : '#';
-  };
 
   return (
     <li className="test" aria-label="Test card">
@@ -44,7 +44,7 @@ function TestCard({test, sites, isLoadingSites}: Props): JSX.Element {
       </span>
       <a
         className="test__text test__site-link"
-        href={getTestSiteLink(siteId)} aria-label="Test site"
+        href={getTestSiteLink(siteId, sites)} aria-label="Test site"
         target="_blank"
         rel="noreferrer"
       >

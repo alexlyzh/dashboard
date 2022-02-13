@@ -14,7 +14,7 @@ describe('Component: Search', () => {
         search={''}
         onSearchInput={onSearchInput}
       />
-    )
+    );
 
     const input = screen.getByRole('textbox');
     expect(screen.getByText(`${tests.length} tests`)).toBeInTheDocument();

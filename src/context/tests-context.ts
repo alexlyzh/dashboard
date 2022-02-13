@@ -1,7 +1,12 @@
-import { createContext } from 'react';
+import { createContext, Dispatch, SetStateAction } from 'react';
 import { Test } from '../types/types';
 
-type ContextType = [Test[], boolean];
+type ContextType = [
+  Test[],
+  boolean,
+  Dispatch<SetStateAction<Test[]>>?,
+  Dispatch<SetStateAction<boolean>>?,
+];
 
 const TestsContext = createContext<ContextType>([[], false]);
 

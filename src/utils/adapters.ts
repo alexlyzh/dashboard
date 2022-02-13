@@ -9,15 +9,4 @@ export const adaptTestToClient = ({id, name, type, siteId, status}: Test) => ({
   siteId,
 });
 
-const removeWebProtocol = (url: string) => {
-  let handled = '';
-  handled = url.replace('https://', '');
-  handled = handled.replace('http://', '');
-  handled = handled.replace('www.', '');
-  return handled;
-};
-
-export const adaptSiteToClient = ({id, url}: Site) => ({
-  id,
-  url: removeWebProtocol(url),
-});
+export const adaptSiteToClient = (site: Site) => site;

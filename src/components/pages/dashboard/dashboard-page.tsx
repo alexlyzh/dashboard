@@ -5,10 +5,11 @@ import SortForm from './sort-form/sort-form';
 import TestList from './test-list/test-list';
 import TestsContext from '../../../context/tests-context';
 import SitesContext from '../../../context/sites-context';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { useSearch } from '../../../hooks/use-search';
 import { useSort } from '../../../hooks/use-sort';
-import { useProcessedTests } from '../../../hooks/use-processed-tests';
+import { sortTests } from '../../../utils/sort';
+import { Test } from '../../../types/types';
 
 const loadingStyle = {
   display: 'flex',
@@ -21,12 +22,14 @@ const loadingStyle = {
   fontSize: 50,
 } as const;
 
+const filterTests = (tests: Test[], match: string) => tests.filter((test) => test.name.toLowerCase().includes(match.toLowerCase()));
+
 function DashboardPage(): JSX.Element {
   const [tests, isLoadingTests] = useContext(TestsContext);
   const [sites, isLoadingSites] = useContext(SitesContext);
   const {search, handleSearchChange, resetSearch} = useSearch();
   const sort = useSort();
-  const handledTests = useProcessedTests(tests, sites, search, sort.currentSort);
+  const handledTests = useMemo(() => sortTests(sort.currentSort, filterTests(tests, search), sites), [tests, sites, search, sort]);
 
   if (isLoadingTests) {
     return <p style={loadingStyle}>Loading...</p>;

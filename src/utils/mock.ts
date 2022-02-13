@@ -26,10 +26,10 @@ export const getMockSite = (siteId?: number) => ({
 
 export const getMockTest = (siteId?: number) => ({
   id: getRandomInteger(0, 10),
-  name: getRandomString(getRandomInteger(0, 100)),
+  name: getRandomString(getRandomInteger(1, 500)),
   type: testTypes[getRandomInteger(0, testTypes.length - 1)],
   status: testStatuses[getRandomInteger(0, testStatuses.length - 1)].toLowerCase(),
-  siteId: siteId ? siteId : getRandomInteger(0, 100),
+  siteId: siteId ? siteId : getRandomInteger(1, 500),
 });
 
 export const getSeveralMockTests = (count: number, siteId?: number) => {

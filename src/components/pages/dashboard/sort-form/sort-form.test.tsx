@@ -14,13 +14,13 @@ describe('Component: SortForm', () => {
         onSortSiteClick={jest.fn}
       />);
 
-      expect(screen.queryByLabelText(/sort form/i)).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/sort form/i)).not.toBeInTheDocument();
   });
 
   it('should render correctly', () => {
     render(
       <SortForm
-        isVisible={true}
+        isVisible
         sort={''}
         onSortNameClick={jest.fn}
         onSortTypeClick={jest.fn}
@@ -38,7 +38,7 @@ describe('Component: SortForm', () => {
     const onSortSiteClick = jest.fn();
     render(
       <SortForm
-        isVisible={true}
+        isVisible
         sort={''}
         onSortNameClick={onSortNameClick}
         onSortTypeClick={onSortTypeClick}

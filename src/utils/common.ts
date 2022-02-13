@@ -6,3 +6,11 @@ export const getRandomHEXColor = () => {
   }
   return color;
 };
+
+export const removeWebProtocol = (url: string) => {
+  let handled = '';
+  handled = url.replace('https://', '');
+  handled = handled.replace('http://', '');
+  handled = handled.replace('www.', '');
+  return handled;
+};
