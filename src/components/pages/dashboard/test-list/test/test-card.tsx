@@ -1,7 +1,7 @@
 import './test-card.css'
 import { generatePath, Link } from 'react-router-dom';
 import { getRandomHEXColor } from '../../../../../utils/common';
-import { AppPath, color, TestStatus, testType } from '../../../../../const';
+import { AppPath, color, redirectBtnName, TestStatus } from '../../../../../const';
 import { Site, Test } from '../../../../../types/types';
 
 type Props = {
@@ -40,7 +40,7 @@ function TestCard({test, sites, isLoadingSites}: Props): JSX.Element {
         style={{color: color[status.toLowerCase() as keyof typeof color]}}
         aria-label="Test status"
       >
-        {status.toLowerCase()}
+        { status }
       </span>
       <a
         className="test__text test__site-link"
@@ -54,7 +54,7 @@ function TestCard({test, sites, isLoadingSites}: Props): JSX.Element {
         className={`button ${!isResultsPageRedirect ? 'button--dark' : ''}`}
         to={pathname}
       >
-        { isResultsPageRedirect ? 'Results' : 'Finalize' }
+        { isResultsPageRedirect ? redirectBtnName.results : redirectBtnName.finalize }
       </Link>
     </li>
   );

@@ -5,7 +5,7 @@ export const adaptTestToClient = ({id, name, type, siteId, status}: Test) => ({
   id,
   name,
   type: testType[type.toLowerCase() as keyof typeof testType],
-  status,
+  status: status.toLowerCase(),
   siteId,
 });
 

@@ -21,15 +21,15 @@ export const getRandomString = (length: number) => {
 
 export const getMockSite = (siteId?: number) => ({
   id: siteId ? siteId : getRandomInteger(0, 10),
-  url: `https://${getRandomString(getRandomInteger(0, 10))}.com`,
+  url: `${getRandomString(getRandomInteger(0, 10))}.com`,
 });
 
 export const getMockTest = (siteId?: number) => ({
   id: getRandomInteger(0, 10),
-  name: getRandomString(getRandomInteger(0, 1000)),
+  name: getRandomString(getRandomInteger(0, 100)),
   type: testTypes[getRandomInteger(0, testTypes.length - 1)],
   status: testStatuses[getRandomInteger(0, testStatuses.length - 1)],
-  siteId: siteId ? siteId : getRandomInteger(0, 10),
+  siteId: siteId ? siteId : getRandomInteger(0, 100),
 });
 
 export const getSeveralMockTests = (count: number, siteId?: number) => {

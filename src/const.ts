@@ -51,3 +51,8 @@ export const testType = <const>{
   mvt: 'MVT',
   'server_side': 'Server-side',
 };
+
+export const redirectBtnName = <const>{
+  results: 'Results',
+  finalize: 'Finalize',
+};
