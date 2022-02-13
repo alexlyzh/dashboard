@@ -21,6 +21,7 @@ function Search({ tests, isLoadingTests, search, onSearchInput }: Props): JSX.El
       className={`search ${isActive ? 'search--active': ''}`}
       onClick={focusOnInput}
       onSubmit={(evt) => evt.preventDefault()}
+      aria-label="search form"
     >
       <div className="search__icon">
         <img style={{height: '14px', width: '14px'}} src="img/search.svg" alt="search-icon"/>

@@ -13,7 +13,7 @@ type Props = {
 function TestList({tests, sites, isLoadingSites, isLoadingTests, onResetBtnClick}: Props): JSX.Element {
   if (!isLoadingTests && !tests.length) {
     return (
-      <div className="tests-not-found">
+      <div className="tests-not-found" aria-label="No tests found">
         <p>Your search did not match any results.</p>
         <button className="button" onClick={onResetBtnClick}>Reset</button>
       </div>
@@ -21,7 +21,7 @@ function TestList({tests, sites, isLoadingSites, isLoadingTests, onResetBtnClick
   }
 
   return (
-    <ul>
+    <ul aria-label="list of tests">
       {tests.map((test) => (
         <TestCard
           test={test}

@@ -10,7 +10,7 @@ type Props = {
 
 function MainLayout({heading, children, pageClassName, subHeading}: Props): JSX.Element {
   return (
-    <div className={`page ${pageClassName ? pageClassName : ''}`}>
+    <div className={`page ${pageClassName ? pageClassName : ''}`} aria-label="page content">
       <header>
         <div className="container">
           <h1 className="header__heading">{heading}</h1>

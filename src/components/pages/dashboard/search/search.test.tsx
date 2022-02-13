@@ -18,6 +18,7 @@ describe('Component: Search', () => {
 
     const input = screen.getByRole('textbox');
     expect(screen.getByText(`${tests.length} tests`)).toBeInTheDocument();
+    expect(screen.getByLabelText(/search form/i)).toBeInTheDocument();
     expect(input).toBeInTheDocument();
     expect(input).toBeEmptyDOMElement();
 

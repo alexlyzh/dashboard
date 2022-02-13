@@ -36,7 +36,7 @@ function DashboardPage(): JSX.Element {
     <TestsContext.Provider value={[tests, isLoadingTests]}>
       <SitesContext.Provider value={[sites, isLoadingSites]}>
         <MainLayout pageClassName="page__dashboard" heading={'Dashboard'} >
-          <section aria-label="Tests">
+          <section aria-label="dashboard">
             <div className="container">
               <div className="dashboard">
                 <Search

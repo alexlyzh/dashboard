@@ -19,6 +19,7 @@ describe('Component: TestList', () => {
     );
 
     const resetButton = screen.getByRole('button', { name: /reset/i });
+    expect(screen.getByLabelText(/No tests found/i)).toBeInTheDocument();
     expect(screen.getByText(/search did not match any results/i)).toBeInTheDocument();
     expect(resetButton).toBeInTheDocument();
     userEvent.click(resetButton);
@@ -42,6 +43,7 @@ describe('Component: TestList', () => {
 
     expect(screen.queryByText(/search did not match any results/i)).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /reset/i })).not.toBeInTheDocument();
+    expect(screen.getByLabelText(/list of tests/i)).toBeInTheDocument();
     expect(screen.getAllByLabelText(/test card/i)).toHaveLength(tests.length);
   });
 });

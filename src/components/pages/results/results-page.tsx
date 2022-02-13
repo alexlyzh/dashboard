@@ -7,6 +7,7 @@ function ResultsPage(): JSX.Element {
   const [test, isLoading] = useTest();
   return (
     <MainLayout heading={'Results'} subHeading={ isLoading || !test ? 'Loading...' : test.name } >
+      <span className="visually-hidden" aria-label="Results page">Results page</span>
       <BackLink to={AppPath.root} />
     </MainLayout>
   );

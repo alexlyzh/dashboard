@@ -7,9 +7,8 @@ function FinalizePage(): JSX.Element {
   const [test, isLoading] = useTest();
   return (
     <MainLayout heading={'Finalize'} subHeading={ isLoading || !test ? 'Loading...' : test.name } >
-      <div className="container">
-        <BackLink to={AppPath.root} />
-      </div>
+      <span className="visually-hidden" aria-label="Finalize page">Finalize page</span>
+      <BackLink to={AppPath.root} />
     </MainLayout>
   );
 }

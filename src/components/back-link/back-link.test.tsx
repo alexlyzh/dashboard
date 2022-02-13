@@ -25,6 +25,7 @@ describe('Component: BackLink', () => {
     );
 
     expect(screen.getByText(/current page/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/go back/i)).toBeInTheDocument();
     userEvent.click(screen.getByText(/back/i));
     expect(screen.getByText(/previous page/i)).toBeInTheDocument();
   });

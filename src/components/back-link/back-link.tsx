@@ -8,7 +8,7 @@ type Props = {
 function BackLink({to}: Props): JSX.Element {
   return (
     <div className="container back-link-container">
-      <Link className="back-link" to={to}>Back</Link>
+      <Link className="back-link" to={to} aria-label="Go back">Back</Link>
     </div>
   );
 }
