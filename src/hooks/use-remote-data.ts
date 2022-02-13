@@ -21,7 +21,7 @@ export const useRemoteData = <Type>(
         setData(adaptedData);
       })();
     }
-  }, [api, url, shouldLoadData]);
+  }, [api, url, shouldLoadData, adaptToClient]);
 
   return [data, loading] as [Type[], boolean];
 };

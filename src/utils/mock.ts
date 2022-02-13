@@ -1,7 +1,7 @@
 import { TestStatus, testType } from '../const';
 import { Test } from '../types/types';
 
-const testStatuses: (keyof typeof TestStatus)[] = ['Draft', 'Online', 'Stopped', 'Paused'];
+const testStatuses: (keyof typeof TestStatus)[] = ['draft', 'online', 'stopped', 'paused'];
 const testTypes: (keyof typeof testType)[] = ['classic', 'mvt', 'server_side'];
 
 export const getRandomInteger = (min = 0, max = 1): number => {
@@ -28,7 +28,7 @@ export const getMockTest = (siteId?: number) => ({
   id: getRandomInteger(0, 10),
   name: getRandomString(getRandomInteger(0, 100)),
   type: testTypes[getRandomInteger(0, testTypes.length - 1)],
-  status: testStatuses[getRandomInteger(0, testStatuses.length - 1)],
+  status: testStatuses[getRandomInteger(0, testStatuses.length - 1)].toLowerCase(),
   siteId: siteId ? siteId : getRandomInteger(0, 100),
 });
 

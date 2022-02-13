@@ -47,6 +47,7 @@ export const Sort = {
 
   [SortType.StatusAsc]: (tests: Test[]) =>
     tests.slice().sort((a, b) => {
+      console.log('__________________________')
       if (StatusPriority[a.status as TestStatus] > StatusPriority[b.status as TestStatus]) return 1;
       if (StatusPriority[a.status as TestStatus] < StatusPriority[b.status as TestStatus]) return -1;
       return 0;
