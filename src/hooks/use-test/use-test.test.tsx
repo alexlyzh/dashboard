@@ -1,5 +1,6 @@
 import ApiContext from '../../context/api-context';
 import TestsContext from '../../context/tests-context';
+import MockAdapter from 'axios-mock-adapter';
 import { generatePath, Route, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { renderHook } from '@testing-library/react-hooks';
@@ -11,11 +12,9 @@ import { getSeveralMockTests, getRandomInteger } from '../../utils/mock';
 const MOCK_ID = 1;
 
 const api = createApi();
-
 const pathname = generatePath(AppPath.root, { id: MOCK_ID });
 const history = createMemoryHistory();
 history.push(pathname);
-
 
 describe('Hook: useTest', () => {
   it('should return correct value', () => {

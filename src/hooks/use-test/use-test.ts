@@ -12,16 +12,13 @@ type PageParams = {
 
 export const useTest = (testId?: number) => {
   const api = useContext(ApiContext);
-  const [tests, isLoading, setTests, setIsLoading] = useContext(TestsContext);
-  const shouldLoadTest = useMemo(() => !isLoading && !tests.length, [isLoading, tests.length]);
-
+  const [tests, isLoading, setTests, setIsLoading] = useContext(TestsContext)
   const params = useParams<PageParams>();
-  const id = Number(testId ? testId : params.id);
-
+  const id = useMemo(() => Number(testId ? testId : params.id), [testId, params.id]);
   const test = useMemo(() => tests.find((item) => item.id === id), [id, tests]);
 
   useEffect(() => {
-    if (shouldLoadTest && id && api && setIsLoading && setTests) {
+    if (!tests.length && id && api && setIsLoading && setTests) {
       setIsLoading(true);
       (async () => {
         const {data} = await api.get<Test>(generatePath(ApiPath.test, { id }));
@@ -30,7 +27,7 @@ export const useTest = (testId?: number) => {
         setTests([adaptedTest]);
       })();
     }
-  }, [shouldLoadTest, id, api, setIsLoading, setTests]);
+  }, [tests.length, id, api, setIsLoading, setTests]);
 
   return [test, isLoading] as [Test | undefined, boolean];
 };
