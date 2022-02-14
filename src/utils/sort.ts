@@ -1,5 +1,6 @@
 import { Site, Test } from '../types/types';
 import { SortType, StatusPriority, TestStatus } from '../const';
+import {removeWebProtocol} from './common';
 
 const sortAsc = (tests: Test[], keyName: keyof Test) =>
   tests.slice().sort((a, b) => {
@@ -18,7 +19,7 @@ const sortDesc = (tests: Test[], keyName: keyof Test) =>
 export const Sort = {
   [SortType.SiteAsc]: (tests: Test[], sites: Site[]) => {
     const sitesMap = sites.reduce((mapped, site) => {
-      mapped[site.id] = site.url;
+      mapped[site.id] = removeWebProtocol(site.url);
       return mapped;
     }, {} as Record<number, string>);
     return tests.slice().sort((a, b) => {
@@ -30,7 +31,7 @@ export const Sort = {
 
   [SortType.SiteDesc]: (tests: Test[], sites: Site[]) => {
     const sitesMap = sites.reduce((mapped, site) => {
-      mapped[site.id] = site.url;
+      mapped[site.id] = removeWebProtocol(site.url);
       return mapped;
     }, {} as Record<number, string>);
     return tests.slice().sort((a, b) => {
