@@ -24,7 +24,7 @@
 }
 
 .sort__button:focus {
-  color: red;
+  font-weight: 700;
 }
 
 .sort__arrow {
