@@ -10,13 +10,13 @@ type PageParams = {
   id: string,
 }
 
-export const useTest = () => {
+export const useTest = (testId?: number) => {
   const api = useContext(ApiContext);
   const [tests, isLoading, setTests, setIsLoading] = useContext(TestsContext);
-  const shouldLoadTest = !isLoading && !tests.length;
+  const shouldLoadTest = useMemo(() => !isLoading && !tests.length, [isLoading, tests.length]);
 
   const params = useParams<PageParams>();
-  const id = Number(params.id);
+  const id = Number(testId ? testId : params.id);
 
   const test = useMemo(() => tests.find((item) => item.id === id), [id, tests]);
 
