@@ -4,7 +4,7 @@ import { Router, Switch, Route, generatePath } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { getMockSite, getMockTest } from '../../../../../utils/mock';
 import { createMemoryHistory } from 'history';
-import { TestStatus, redirectBtnName, AppPath } from '../../../../../const';
+import { TestStatus, progressPageName, AppPath } from '../../../../../const';
 
 const MOCK_SITE_ID = 1;
 
@@ -14,7 +14,7 @@ describe('Component: TestCard', () => {
   const test = getMockTest(MOCK_SITE_ID);
   const site = getMockSite(MOCK_SITE_ID);
   const isResultsPageRedirect = test.status !== TestStatus.draft.toLowerCase();
-  const linkText = isResultsPageRedirect ? redirectBtnName.results : redirectBtnName.finalize;
+  const linkText = isResultsPageRedirect ? progressPageName.results : progressPageName.finalize;
   const pathname = isResultsPageRedirect
     ? generatePath(AppPath.results, { id: test.id })
     : generatePath(AppPath.finalize, { id: test.id });

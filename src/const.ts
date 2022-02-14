@@ -56,7 +56,7 @@ export const testType = <const>{
   'server_side': 'Server-side',
 };
 
-export const redirectBtnName = <const>{
+export const progressPageName = <const>{
   results: 'Results',
   finalize: 'Finalize',
 };

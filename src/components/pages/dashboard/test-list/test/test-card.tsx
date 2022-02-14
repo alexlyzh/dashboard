@@ -1,7 +1,7 @@
 import './test-card.css';
 import { generatePath, Link } from 'react-router-dom';
 import { getRandomHEXColor, removeWebProtocol } from '../../../../../utils/common';
-import { AppPath, color, redirectBtnName, TestStatus } from '../../../../../const';
+import { AppPath, color, progressPageName, TestStatus } from '../../../../../const';
 import { Site, Test } from '../../../../../types/types';
 
 type Props = {
@@ -54,7 +54,7 @@ function TestCard({test, sites, isLoadingSites}: Props): JSX.Element {
         className={`button ${!isResultsPageRedirect ? 'button--dark' : ''}`}
         to={pathname}
       >
-        { isResultsPageRedirect ? redirectBtnName.results : redirectBtnName.finalize }
+        { isResultsPageRedirect ? progressPageName.results : progressPageName.finalize }
       </Link>
     </li>
   );

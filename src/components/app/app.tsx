@@ -1,6 +1,5 @@
 import DashboardPage from '../pages/dashboard/dashboard-page';
-import FinalizePage from '../pages/finalize/finalize-page';
-import ResultsPage from '../pages/results/results-page';
+import TestProgressPage from '../pages/test-progress-page/test-progress-page';
 import TestsContext from '../../context/tests-context';
 import SitesContext from '../../context/sites-context';
 import { useMemo, useState } from 'react';
@@ -24,8 +23,12 @@ function App(): JSX.Element {
       <SitesContext.Provider value={sitesData}>
         <Switch>
           <Route exact path={AppPath.root} component={DashboardPage}/>
-          <Route exact path={AppPath.finalize} component={FinalizePage}/>
-          <Route exact path={AppPath.results} component={ResultsPage}/>
+          <Route exact path={AppPath.finalize}>
+            <TestProgressPage heading={'Finalize'} />
+          </Route>
+          <Route exact path={AppPath.results}>
+            <TestProgressPage heading={'Results'} />
+          </Route>
         </Switch>
       </SitesContext.Provider>
     </TestsContext.Provider>

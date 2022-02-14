@@ -1,10 +1,9 @@
 import App from './app';
-import FinalizePage from '../pages/finalize/finalize-page';
-import ResultsPage from '../pages/results/results-page';
+import TestProgressPage from '../pages/test-progress-page/test-progress-page';
 import { render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router, Switch, Route, generatePath } from 'react-router-dom';
-import { AppPath } from '../../const';
+import { AppPath, progressPageName } from '../../const';
 
 const MOCK_ID = 1;
 
@@ -15,8 +14,12 @@ const renderApp = () => {
     <Router history={history}>
       <Switch>
         <Route exact path={AppPath.root} component={App} />
-        <Route exact path={generatePath(AppPath.results, {id: MOCK_ID})} component={ResultsPage} />
-        <Route exact path={generatePath(AppPath.finalize, {id: MOCK_ID})} component={FinalizePage} />
+        <Route exact path={generatePath(AppPath.results, {id: MOCK_ID})}>
+          <TestProgressPage heading={progressPageName.results} />
+        </Route>
+        <Route exact path={generatePath(AppPath.finalize, {id: MOCK_ID})}>
+          <TestProgressPage heading={progressPageName.finalize} />
+        </Route>
       </Switch>
     </Router>
   );
