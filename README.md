@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## API
+
+The app works with the following [API](https://development.kameleoon.net/oivanov/frontend-interview-task-api)
+
 ## Available Scripts
 
 In the project directory, you can run:
