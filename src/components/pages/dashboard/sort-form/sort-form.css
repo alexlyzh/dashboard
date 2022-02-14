@@ -20,7 +20,11 @@
   line-height: 15px;
   text-transform: uppercase;
   color: #999999;
-  outline-offset: 5px;
+  outline: none;
+}
+
+.sort__button:focus {
+  color: red;
 }
 
 .sort__arrow {
