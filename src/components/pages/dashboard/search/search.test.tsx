@@ -23,6 +23,6 @@ describe('Component: Search', () => {
     expect(input).toBeEmptyDOMElement();
 
     userEvent.type(input, 'some-text');
-    expect(onSearchInput).toBeCalled();
+    expect(onSearchInput).toBeCalledTimes('some-text'.length);
   });
 });

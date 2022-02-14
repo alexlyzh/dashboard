@@ -8,7 +8,7 @@ import SitesContext from '../../../context/sites-context';
 import { useContext, useMemo } from 'react';
 import { useSearch } from '../../../hooks/use-search/use-search';
 import { useSort } from '../../../hooks/use-sort/use-sort';
-import {sortFirstToMatchTemplate, sortTests} from '../../../utils/sort';
+import { sortFirstToMatchTemplate, sortTests } from '../../../utils/sort';
 import { Test } from '../../../types/types';
 
 const loadingStyle = {
