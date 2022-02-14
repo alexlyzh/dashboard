@@ -8,7 +8,7 @@ import { createApi } from '../../api/api';
 const api = createApi();
 const mockApi = new MockAdapter(api);
 
-function ApiContextProvider({ children }: { children: any }): JSX.Element {
+function ApiContextProvider({ children }: { children: ReturnType<typeof renderHook> }): JSX.Element {
   return (
     <ApiContext.Provider value={api}>
       {children}
@@ -29,7 +29,7 @@ describe('Hook: useRemoteData',  () => {
   });
 
   it('should load data',  async () => {
-    let shouldLoadData = true
+    let shouldLoadData = true;
     mockApi.onGet(ApiPath.tests).reply(HttpCode.OK, ['fake-response']);
 
     const { result, waitForNextUpdate } = renderHook(

@@ -2,7 +2,7 @@ import ApiContext from '../../context/api-context';
 import { useContext, useEffect, useState, Dispatch, SetStateAction } from 'react';
 import { ApiPath } from '../../const';
 
-export const useRemoteData = <Type = any>(
+export const useRemoteData = <Type>(
   url: ApiPath,
   shouldLoadData: boolean,
   adaptToClient: (data: Type) => Type,
