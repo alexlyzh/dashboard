@@ -82,3 +82,14 @@ export const sortTests = (sort: SortType | '', tests: Test[], sites: Site[]) => 
       return tests;
   }
 };
+
+export const sortFirstToMatchTemplate = (data: Test[], template: string) =>
+  data.slice().sort((a, b) => {
+    if (a.name.toLowerCase().startsWith(template) && !b.name.toLowerCase().startsWith(template)) {
+      return -1;
+    }
+    if (b.name.toLowerCase().startsWith(template) && !a.name.toLowerCase().startsWith(template)) {
+      return 1;
+    }
+    return 0;
+  });

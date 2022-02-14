@@ -8,7 +8,7 @@ import SitesContext from '../../../context/sites-context';
 import { useContext, useMemo } from 'react';
 import { useSearch } from '../../../hooks/use-search/use-search';
 import { useSort } from '../../../hooks/use-sort/use-sort';
-import { sortTests } from '../../../utils/sort';
+import {sortFirstToMatchTemplate, sortTests} from '../../../utils/sort';
 import { Test } from '../../../types/types';
 
 const loadingStyle = {
@@ -29,7 +29,10 @@ function DashboardPage(): JSX.Element {
   const [sites, isLoadingSites] = useContext(SitesContext);
   const {search, handleSearchChange, resetSearch} = useSearch();
   const sort = useSort();
-  const handledTests = useMemo(() => sortTests(sort.currentSort, filterTests(tests, search), sites), [tests, sites, search, sort]);
+  const handledTests = useMemo(
+    () => sortFirstToMatchTemplate(sortTests(sort.currentSort, filterTests(tests, search), sites), search),
+    [tests, sites, search, sort]
+  );
 
   if (isLoadingTests) {
     return <p style={loadingStyle}>Loading...</p>;
